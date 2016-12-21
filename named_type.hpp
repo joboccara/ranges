@@ -1,6 +1,8 @@
 #ifndef NAMED_TYPE_HPP
 #define NAMED_TYPE_HPP
 
+// NamedType provides strong typing, see http://www.fluentcpp.com/2016/12/08/strong-types-for-strong-interfaces/ for more details about this component
+
 #include <functional>
 
 template<typename T, typename Context>
