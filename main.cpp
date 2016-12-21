@@ -51,8 +51,8 @@ bool testZip()
 
 bool testCartesianProduct()
 {
-	std::vector<char> input1 = {'A', 'B', 'C', 'D', 'E'};
-	std::vector<int> input2 = {1, 2, 3, 4, 5};
+    std::vector<char> input1 = {'A', 'B', 'C', 'D', 'E'};
+    std::vector<int> input2 = {1, 2, 3, 4, 5};
     std::vector<std::string> expected = { "A1", "A2", "A3", "A4", "A5",
                                           "B1", "B2", "B3", "B4", "B5",
                                           "C1", "C2", "C3", "C4", "C5",
