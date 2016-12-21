@@ -1,3 +1,17 @@
+/* cartesian_product is a range view adaptor to represent all possible combinations of several input ranges in the form of tuples.
+   For instance, applying it on 3 ranges containing:
+   { a,b }
+   { 1,2 }
+   { X,Y,Z }
+   produces a view seeing:
+   {
+     std::tuple(a,1,X), std::tuple(a,1,Y), std::tuple(a,1,Z),
+     std::tuple(a,2,X), std::tuple(a,2,Y), std::tuple(a,2,Z),
+     std::tuple(b,1,X), std::tuple(b,1,Y), std::tuple(b,1,Z),
+     std::tuple(b,2,X), std::tuple(b,2,Y), std::tuple(b,2,Z),
+   }
+*/
+
 #include "cartesian_product.hpp"
 #include "transform.hpp"
 
