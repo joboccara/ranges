@@ -1,5 +1,4 @@
 #include "adjacent.hpp"
-#include "cartesian_product.hpp"
 #include "transform.hpp"
 #include "zip.hpp"
 
@@ -20,12 +19,12 @@ int multiplyBy2(int i)
 
 bool testTransform()
 {
-	std::vector<int> input = {1, 2, 3, 4, 5};
+    std::vector<int> input = {1, 2, 3, 4, 5};
     std::vector<int> expected = { 2, 4, 6, 8, 10 };
     std::vector<int> result;
 
-	auto doubledNumbers = input | ranges::view::transform(multiplyBy2);
-	push_back(result, doubledNumbers);
+    auto doubledNumbers = input | ranges::view::transform(multiplyBy2);
+    push_back(result, doubledNumbers);
 
     return result == expected;
 }
@@ -39,12 +38,12 @@ std::string letterPlusNumber(char line, int column)
 
 bool testZip()
 {
-	std::vector<char> input1 = {'A', 'B', 'C', 'D', 'E'};
-	std::vector<int> input2 = {1, 2, 3, 4, 5};
+    std::vector<char> input1 = {'A', 'B', 'C', 'D', 'E'};
+    std::vector<int> input2 = {1, 2, 3, 4, 5};
     std::vector<std::string> expected = { "A1", "B2", "C3", "D4", "E5" };
     std::vector<std::string> result;
 
-	push_back(result, ranges::view::zip(input1, input2) | ranges::view::transform(tupled_args(letterPlusNumber)));
+    push_back(result, ranges::view::zip(input1, input2) | ranges::view::transform(tupled_args(letterPlusNumber)));
 
     return result == expected;
 }
@@ -60,7 +59,7 @@ bool testCartesianProduct()
                                           "E1", "E2", "E3", "E4", "E5" };
     std::vector<std::string> result;
 
-	push_back(result, ranges::view::cartesian_product(input1, input2) | ranges::view::transform(tupled_args(letterPlusNumber)));
+    push_back(result, ranges::view::cartesian_product(input1, input2) | ranges::view::transform(tupled_args(letterPlusNumber)));
 
     return result == expected;
 }
@@ -78,7 +77,7 @@ bool testAdjacent()
     std::vector<std::string> expected = { "A-B", "B-C", "C-D", "D-E", "E-F" };
     std::vector<std::string> result;
 
-	push_back(result, input | ranges::view::adjacent | ranges::view::transform(paired_args(letterToNext)));
+    push_back(result, input | ranges::view::adjacent | ranges::view::transform(paired_args(letterToNext)));
 
     return result == expected;
 }
