@@ -21,11 +21,14 @@
 #include <sstream>
 #include <vector>
 
+namespace
+{
 std::string letterPlusNumber(char line, int column)
 {
     std::ostringstream position;
     position << line << column;
     return position.str();
+}
 }
 
 bool testCartesianProduct()
