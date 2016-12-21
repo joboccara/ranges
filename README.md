@@ -1,5 +1,3 @@
-joboccara/ranges
-
 This project implements several range adaptors, that aim at behaving like those of boost ranges or range-v3.
 
 The point of this project is to discover new range adaptors that can solve common problems.
