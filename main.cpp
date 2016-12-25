@@ -72,7 +72,7 @@ std::string letterToNext(char letter, char next)
     return result.str();
 }
 
-bool testAdjacent()
+bool testAdjacentAdaptor()
 {
     std::vector<char> input = { 'A', 'B', 'C', 'D', 'E', 'F' };
     std::vector<std::string> expected = { "A-B", "B-C", "C-D", "D-E", "E-F" };
@@ -81,6 +81,22 @@ bool testAdjacent()
     push_back(result, input | ranges::view::adjacent | ranges::view::transform(paired_args(letterToNext)));
 
     return result == expected;
+}
+
+bool testConsecutiveFunction()
+{
+    std::vector<char> input = { 'A', 'B', 'C', 'D', 'E', 'F' };
+    std::vector<std::string> expected = { "A-B", "B-C", "C-D", "D-E", "E-F" };
+    std::vector<std::string> result;
+
+    push_back(result, ranges::view::consecutive(input) | ranges::view::transform(paired_args(letterToNext)));
+
+    return result == expected;
+}
+
+bool testAdjacent()
+{
+    return testAdjacentAdaptor() && testConsecutiveFunction();
 }
 
 template <typename Function>
