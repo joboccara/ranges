@@ -1,4 +1,5 @@
 #include "adjacent.hpp"
+#include "cartesian_product.hpp"
 #include "transform.hpp"
 #include "zip.hpp"
 

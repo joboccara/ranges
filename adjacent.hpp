@@ -61,16 +61,22 @@ private:
 namespace view
 {
 
+template<typename Range>
+auto consecutive(Range& range) -> iterator_range<adjacent_iterator<decltype(range.begin())>>
+{
+	using UnderlyingIterator = decltype(range.begin());
+	return iterator_range<adjacent_iterator<UnderlyingIterator>>(
+		adjacent_iterator<UnderlyingIterator>(BeginIterator<UnderlyingIterator>(range.begin()), EndIterator<UnderlyingIterator>(range.end())),
+		adjacent_iterator<UnderlyingIterator>(EndIterator<UnderlyingIterator>(range.end())));
+}
+
 class adjacent_adaptor {};
 adjacent_adaptor adjacent;
 
 template<typename Range>
 auto operator|(Range& range, adjacent_adaptor) -> iterator_range<adjacent_iterator<decltype(range.begin())>>
 {
-	using UnderlyingIterator = decltype(range.begin());
-	return iterator_range<adjacent_iterator<UnderlyingIterator>>(
-		adjacent_iterator<UnderlyingIterator>(BeginIterator<UnderlyingIterator>(range.begin()), EndIterator<UnderlyingIterator>(range.end())),
-		adjacent_iterator<UnderlyingIterator>(EndIterator<UnderlyingIterator>(range.end())));
+    return consecutive(range);
 }
     
 } // namespace view
